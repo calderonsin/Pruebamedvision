@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pruebamedvision.Models;
 
 namespace Pruebamedvision.Data
 {
-    public class PruebatecnicaDbContext:DbContext
+    public class PruebatecnicaDbContext: IdentityDbContext<IdentityUser>    
     {
         private readonly IConfiguration Configuration;
         public PruebatecnicaDbContext(DbContextOptions options ,IConfiguration configuration) : base(options) {
@@ -19,8 +20,9 @@ namespace Pruebamedvision.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
 
-            
+
 
             modelBuilder.Entity<Persona>()
                 .HasMany(e => e.Citas)

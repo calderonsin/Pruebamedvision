@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pruebamedvision.Models;
 using Pruebamedvision.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Pruebamedvision.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize()]
     public class PersonaController : ControllerBase
     {
         private readonly PruebatecnicaDbContext dbContext;
